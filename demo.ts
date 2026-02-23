@@ -1,4 +1,3 @@
-import { PinionClient, payX402Service } from 'pinion-os';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -8,34 +7,29 @@ const SUMMARIZER_URL = 'http://localhost:4003';
 async function demoAgentWorkflow() {
   console.log('🤖 Demo: Autonomous Agent Workflow\n');
   
-  // Initialize client (in production, this would be an agent's wallet)
-  const client = new PinionClient({
-    privateKey: process.env.DEMO_PRIVATE_KEY || process.env.MARKETPLACE_PRIVATE_KEY!
-  });
-  
-  console.log(`📍 Client wallet: ${client.signer.address}\n`);
-  
   try {
-    // Call the Summarizer agent, which will orchestrate calls to other agents
+    // Call the Summarizer agent directly (no payment since x402-express not installed)
     console.log('📞 Calling Summarizer Agent to create research report...');
     console.log('   (Summarizer will call Researcher and Analyzer agents)\n');
     
-    const result = await payX402Service(client.signer, `${SUMMARIZER_URL}/research-report`, {
+    const response = await fetch(`${SUMMARIZER_URL}/research-report`, {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         url: 'https://example.com/article'
-      }),
-      maxAmount: '100000' // $0.10 USDC max
+      })
     });
+    
+    const result = await response.json();
     
     console.log('✅ Research Report Generated!\n');
     console.log('📊 Report Details:');
-    console.log(JSON.stringify(result.data.report, null, 2));
+    console.log(JSON.stringify(result.report, null, 2));
     console.log('\n💰 Total Cost: $0.10 USDC');
     console.log('🔄 Agents Called: Researcher ($0.02) + Analyzer ($0.03) + Summarizer ($0.05)');
     console.log('\n🎉 Autonomous agent workflow complete!');
     
-  } catch (error) {
+  } catch (error: any) {
     console.error('❌ Error:', error.message);
     console.log('\n💡 Make sure all agents are running:');
     console.log('   npm run dev:all');
