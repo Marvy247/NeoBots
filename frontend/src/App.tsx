@@ -186,7 +186,7 @@ function App() {
                   Network: Base
                 </div>
                 <p className="text-xs text-text-pale uppercase tracking-widest font-medium">
-                  © 2026 AetherBot • POWERED BY PINIONOS
+                  © 2026 NEOBOTS • POWERED BY PINIONOS
                 </p>
               </div>
             </div>
