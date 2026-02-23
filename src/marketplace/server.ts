@@ -4,6 +4,7 @@ import cors from 'cors';
 import { WebSocketServer } from 'ws';
 import { Agent, Job, Transaction, MarketplaceStats } from '../types/index.js';
 import dotenv from 'dotenv';
+import { x402 } from 'x402-express';
 
 dotenv.config();
 
@@ -108,7 +109,11 @@ app.listen(PORT, () => {
 // PinionOS skill server for agent registration
 const skillServer = createSkillServer({
   payTo: process.env.MARKETPLACE_PRIVATE_KEY!,
-  network: (process.env.PINION_NETWORK as any) || 'base',
+  network: (process.env.PINION_NETWORK as any) || 'base-sepolia',
+  x402Middleware: x402({
+    facilitatorUrl: 'https://facilitator.payai.network',
+    network: (process.env.PINION_NETWORK as any) || 'base-sepolia'
+  })
 });
 
 skillServer.add(skill('register', {
