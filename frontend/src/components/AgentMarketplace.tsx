@@ -1,7 +1,7 @@
 import { useMarketplace } from '../context/MarketplaceContext';
 import { motion } from 'framer-motion';
 
-export function AgentMarketplace() {
+export function AetherBotplace() {
   const { agents, loading } = useMarketplace();
 
   if (loading) {

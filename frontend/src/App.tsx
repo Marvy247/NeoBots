@@ -67,7 +67,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/dashboard" element={<PageWrapper><AgentDashboard /></PageWrapper>} />
-        <Route path="/marketplace" element={<PageWrapper><AgentMarketplace /></PageWrapper>} />
+        <Route path="/marketplace" element={<PageWrapper><AetherBotplace /></PageWrapper>} />
         <Route path="/activity" element={<PageWrapper><LiveActivity /></PageWrapper>} />
         <Route path="/transactions" element={<PageWrapper><TransactionHistory /></PageWrapper>} />
       </Routes>
@@ -186,7 +186,7 @@ function App() {
                   Network: Base
                 </div>
                 <p className="text-xs text-text-pale uppercase tracking-widest font-medium">
-                  © 2026 AGENTMARKET • POWERED BY PINIONOS
+                  © 2026 AetherBot • POWERED BY PINIONOS
                 </p>
               </div>
             </div>

@@ -109,7 +109,7 @@ cc08959 docs: add comprehensive project summary and statistics
 219bcbf docs: add submission guide and Twitter announcement template
 acc90db feat: add demo script showcasing autonomous agent orchestration
 9ed3c9c feat: add automated setup script for easy installation
-c4de3c9 refactor: update HTML meta tags for AgentMarket branding
+c4de3c9 refactor: update HTML meta tags for AetherBot branding
 1ea81f9 chore: remove old Stacks project files and assets
 a56e543 refactor: remove Stacks dependencies from frontend
 7c79d21 chore: add package-lock.json after dependency installation
