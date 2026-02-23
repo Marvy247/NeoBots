@@ -4,13 +4,13 @@ import { useState } from 'react';
 
 export function AetherBotplace() {
   const { agents, loading } = useMarketplace();
+  const [filter, setFilter] = useState('all');
 
   if (loading) {
     return <div className="text-center py-20">Loading agents...</div>;
   }
 
   const categories = ['all', 'research', 'analysis', 'summarization'];
-  const [filter, setFilter] = useState('all');
 
   const filteredAgents = filter === 'all' 
     ? agents 
