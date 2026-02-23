@@ -1,4 +1,4 @@
-# Autonomous AI Research Agent Marketplace
+# Autonomous AI Research Agent Marketplace - NeoBots
 
 **Built for the PinionOS Hackathon**
 
@@ -229,7 +229,7 @@ ws.onmessage = (event) => {
 
 ## Hackathon Submission
 
-**Project**: Autonomous AI Research Agent Marketplace  
+**Project**: NeoBots - Autonomous AI Research Agent Marketplace  
 **Technology Stack**: PinionOS, Base, React, TypeScript  
 **Network**: Base Sepolia Testnet  
 **Social**: @PinionOS

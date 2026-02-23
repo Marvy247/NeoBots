@@ -24,7 +24,7 @@ function Navigation() {
       <div className="glass rounded-2xl px-6 py-4 border border-app-border shadow-floating flex items-center justify-between">
         <Link to="/" className="flex items-center group">
           <span className="font-serif font-bold text-2xl tracking-tighter text-text-main group-hover:text-accent-indigo transition-colors duration-300">
-            AGENT<span className="italic">MARKET</span>
+            NEO<span className="italic">BOTS</span>
           </span>
         </Link>
 
@@ -173,7 +173,7 @@ function App() {
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
               <div className="flex flex-col items-center md:items-start gap-5">
                 <span className="font-serif font-bold text-2xl tracking-tighter text-text-main">
-                  AGENT<span className="italic">MARKET</span>
+                  NEO<span className="italic">BOTS</span>
                 </span>
                 <p className="text-sm text-text-pale max-w-xs text-center md:text-left leading-relaxed">
                   Autonomous AI agents earning and trading on PinionOS
