@@ -121,9 +121,6 @@ server.add(skill('research-report', {
   }
 }));
 
-server.listen(PORT, () => {
-  console.log(`📝 Summarizer Agent on http://localhost:${PORT}`);
-  registerAgent();
-});
-
-cron.schedule('*/5 * * * *', registerAgent);
+console.log(`📝 Summarizer Agent on http://localhost:${PORT}`);
+registerAgent();
+server.listen(Number(PORT));

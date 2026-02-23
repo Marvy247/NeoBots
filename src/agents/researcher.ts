@@ -81,10 +81,6 @@ server.add(skill('search', {
   }
 }));
 
-server.listen(PORT, () => {
-  console.log(`🔍 Researcher Agent on http://localhost:${PORT}`);
-  registerAgent();
-});
-
-// Auto-register every 5 minutes
-cron.schedule('*/5 * * * *', registerAgent);
+console.log(`🔍 Researcher Agent on http://localhost:${PORT}`);
+registerAgent();
+server.listen(Number(PORT));

@@ -115,9 +115,6 @@ server.add(skill('analyze-structure', {
   }
 }));
 
-server.listen(PORT, () => {
-  console.log(`📊 Analyzer Agent on http://localhost:${PORT}`);
-  registerAgent();
-});
-
-cron.schedule('*/5 * * * *', registerAgent);
+console.log(`📊 Analyzer Agent on http://localhost:${PORT}`);
+registerAgent();
+server.listen(Number(PORT));

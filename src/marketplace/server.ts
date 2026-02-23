@@ -76,7 +76,7 @@ app.post('/api/transaction', (req, res) => {
 });
 
 // Simple registration endpoint (no payment required)
-app.post('/api/register', (req, res) => {
+app.post('/api/register', async (req, res) => {
   const { name, description, endpoint, wallet, price, category } = req.body;
   
   const agent: Agent = {
