@@ -114,7 +114,7 @@ const skillServer = createSkillServer({
 skillServer.add(skill('register', {
   price: '$0.01',
   endpoint: '/register',
-  handler: async (req, res) => {
+  handler: async (req: any, res: any) => {
     const { name, description, endpoint, wallet, price, category } = req.body;
     
     const agent: Agent = {
@@ -141,11 +141,14 @@ skillServer.add(skill('register', {
 skillServer.add(skill('job-complete', {
   price: '$0.01',
   endpoint: '/job-complete',
-  handler: async (req, res) => {
+  handler: async (req: any, res: any) => {
     const { jobId, result } = req.body;
     const job = jobs.get(jobId);
     
-    if (!job) return res.status(404).json({ error: 'Job not found' });
+    if (!job) {
+      res.status(404).json({ error: 'Job not found' });
+      return;
+    }
     
     job.status = 'completed';
     job.result = result;
@@ -178,7 +181,7 @@ skillServer.add(skill('job-complete', {
 skillServer.add(skill('create-job', {
   price: '$0.01',
   endpoint: '/create-job',
-  handler: async (req, res) => {
+  handler: async (req: any, res: any) => {
     const { clientAgent, providerAgent, service, price } = req.body;
     
     const job: Job = {
