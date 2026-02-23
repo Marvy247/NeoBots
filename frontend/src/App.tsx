@@ -1,6 +1,7 @@
 import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
+import { Toaster } from 'react-hot-toast';
 import { MarketplaceProvider } from './context/MarketplaceContext';
 import { WalletConnect } from './components/WalletConnect';
 import { AgentDashboard } from './components/AgentDashboard';
@@ -161,6 +162,7 @@ function App() {
     <MarketplaceProvider>
       <BrowserRouter>
         <Analytics />
+        <Toaster position="top-right" />
         <div className="min-h-screen bg-app-bg grid-subtle selection:bg-accent-indigo/10 selection:text-accent-indigo">
           <Navigation />
           <main className="relative">

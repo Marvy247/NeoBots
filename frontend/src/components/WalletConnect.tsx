@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import toast from 'react-hot-toast';
 
 declare global {
   interface Window {
@@ -50,7 +51,7 @@ export function WalletConnect() {
 
   const connect = async () => {
     if (!window.ethereum) {
-      alert('Please install MetaMask!');
+      toast.error('Please install MetaMask!');
       return;
     }
 
@@ -68,6 +69,7 @@ export function WalletConnect() {
           method: 'wallet_switchEthereumChain',
           params: [{ chainId: '0x14a34' }], // 84532 in hex
         });
+        toast.success('Connected to Base Sepolia');
       } catch (switchError: any) {
         if (switchError.code === 4902) {
           await window.ethereum.request({
@@ -80,10 +82,12 @@ export function WalletConnect() {
               blockExplorerUrls: ['https://sepolia.basescan.org']
             }]
           });
+          toast.success('Base Sepolia network added');
         }
       }
     } catch (error) {
       console.error('Connection error:', error);
+      toast.error('Failed to connect wallet');
     } finally {
       setIsConnecting(false);
     }
@@ -93,15 +97,13 @@ export function WalletConnect() {
     setAddress(null);
     setBalance('0');
     setShowDropdown(false);
-    // Note: MetaMask doesn't support programmatic disconnect for security reasons
-    // User must disconnect manually from MetaMask extension
-    alert('Disconnected from app. To fully disconnect, go to MetaMask → Connected sites → Disconnect');
+    toast.success('Disconnected from app');
   };
 
   const copyAddress = () => {
     if (address) {
       navigator.clipboard.writeText(address);
-      alert('Address copied!');
+      toast.success('Address copied to clipboard');
     }
   };
 
