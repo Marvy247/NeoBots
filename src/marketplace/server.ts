@@ -56,6 +56,31 @@ app.get('/api/stats', (req, res) => {
   res.json(stats);
 });
 
+// Simple registration endpoint (no payment required)
+app.post('/api/register', (req, res) => {
+  const { name, description, endpoint, wallet, price, category } = req.body;
+  
+  const agent: Agent = {
+    id: wallet,
+    name,
+    description,
+    endpoint,
+    wallet,
+    price,
+    category,
+    rating: 5.0,
+    totalJobs: 0,
+    earnings: '0.00',
+    status: 'online'
+  };
+  
+  agents.set(wallet, agent);
+  broadcast({ type: 'agent_registered', agent });
+  console.log(`✅ Agent registered: ${name}`);
+  
+  res.json({ success: true, agent });
+});
+
 app.listen(PORT, () => {
   console.log(`🏪 Marketplace API running on http://localhost:${PORT}`);
   console.log(`🔌 WebSocket server on ws://localhost:${WS_PORT}`);

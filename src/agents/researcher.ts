@@ -16,8 +16,9 @@ const pinion = new PinionClient({ privateKey: WALLET });
 // Register with marketplace
 async function registerAgent() {
   try {
-    await payX402Service(pinion.signer, `${MARKETPLACE_URL}/register`, {
+    const response = await fetch(`http://localhost:4000/api/register`, {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: 'Web Researcher',
         description: 'Scrapes and extracts data from websites',
@@ -25,11 +26,11 @@ async function registerAgent() {
         wallet: pinion.signer.address,
         price: '0.02',
         category: 'research'
-      }),
-      maxAmount: '10000'
+      })
     });
+    const data = await response.json();
     console.log('✅ Registered with marketplace');
-  } catch (err) {
+  } catch (err: any) {
     console.log('⚠️  Registration pending:', err.message);
   }
 }
