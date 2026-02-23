@@ -90,5 +90,3 @@ export function AetherBotplace() {
     </div>
   );
 }
-
-import { useState } from 'react';
