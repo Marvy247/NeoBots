@@ -36,8 +36,8 @@ async function registerAgent() {
 }
 
 const server = createSkillServer({
-  payTo: WALLET,
-  network: (process.env.PINION_NETWORK as any) || 'base',
+  payTo: pinion.signer.address,
+  network: (process.env.PINION_NETWORK as any) || 'base-sepolia',
 });
 
 server.add(skill('scrape', {
