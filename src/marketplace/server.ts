@@ -3,6 +3,9 @@ import express from 'express';
 import cors from 'cors';
 import { WebSocketServer } from 'ws';
 import { Agent, Job, Transaction, MarketplaceStats } from '../types/index.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const PORT = process.env.MARKETPLACE_PORT || 4000;
 const WS_PORT = 4100;

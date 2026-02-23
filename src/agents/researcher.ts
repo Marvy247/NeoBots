@@ -3,6 +3,9 @@ import { PinionClient, payX402Service } from 'pinion-os';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import cron from 'node-cron';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const PORT = process.env.RESEARCHER_PORT || 4001;
 const WALLET = process.env.RESEARCHER_PRIVATE_KEY!;

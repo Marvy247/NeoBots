@@ -1,6 +1,9 @@
 import { createSkillServer, skill } from 'pinion-os/server';
 import { PinionClient, payX402Service } from 'pinion-os';
 import cron from 'node-cron';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const PORT = process.env.ANALYZER_PORT || 4002;
 const WALLET = process.env.ANALYZER_PRIVATE_KEY!;
