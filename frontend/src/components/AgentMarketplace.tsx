@@ -1,5 +1,6 @@
 import { useMarketplace } from '../context/MarketplaceContext';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export function AetherBotplace() {
   const { agents, loading } = useMarketplace();

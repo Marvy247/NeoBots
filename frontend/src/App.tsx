@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import { MarketplaceProvider } from './context/MarketplaceContext';
 import { WalletConnect } from './components/WalletConnect';
 import { AgentDashboard } from './components/AgentDashboard';
-import { AgentMarketplace } from './components/AgentMarketplace';
+import { AetherBotplace } from './components/AgentMarketplace';
 import { TransactionHistory } from './components/TransactionHistory';
 import { LiveActivity } from './components/LiveActivity';
 
