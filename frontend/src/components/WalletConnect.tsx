@@ -93,6 +93,9 @@ export function WalletConnect() {
     setAddress(null);
     setBalance('0');
     setShowDropdown(false);
+    // Note: MetaMask doesn't support programmatic disconnect for security reasons
+    // User must disconnect manually from MetaMask extension
+    alert('Disconnected from app. To fully disconnect, go to MetaMask → Connected sites → Disconnect');
   };
 
   const copyAddress = () => {
