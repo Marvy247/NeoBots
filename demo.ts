@@ -1,4 +1,7 @@
 import { PinionClient, payX402Service } from 'pinion-os';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const SUMMARIZER_URL = 'http://localhost:4003';
 
