@@ -10,7 +10,7 @@
     "dev:summarizer": "tsx src/agents/summarizer.ts",
     "dev:all": "concurrently \"npm run dev:marketplace\" \"npm run dev:researcher\" \"npm run dev:analyzer\" \"npm run dev:summarizer\"",
     "dev:frontend": "cd frontend && npm run dev",
-    "demo": "tsx demo.ts",
+    "demo": "tsx demo-simple.ts",
     "build": "tsc",
     "start": "node dist/marketplace/server.js"
   },

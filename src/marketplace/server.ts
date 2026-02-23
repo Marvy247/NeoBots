@@ -56,6 +56,25 @@ app.get('/api/stats', (req, res) => {
   res.json(stats);
 });
 
+// Simple transaction recording endpoint
+app.post('/api/transaction', (req, res) => {
+  const tx: Transaction = req.body;
+  transactions.push(tx);
+  
+  // Update agent earnings
+  const agent = agents.get(tx.to);
+  if (agent) {
+    agent.totalJobs++;
+    agent.earnings = (parseFloat(agent.earnings) + parseFloat(tx.amount)).toFixed(2);
+    agents.set(agent.id, agent);
+  }
+  
+  broadcast({ type: 'transaction', transaction: tx });
+  console.log(`💸 Transaction: ${tx.from.slice(0,8)}... → ${tx.to.slice(0,8)}... ($${tx.amount})`);
+  
+  res.json({ success: true });
+});
+
 // Simple registration endpoint (no payment required)
 app.post('/api/register', (req, res) => {
   const { name, description, endpoint, wallet, price, category } = req.body;

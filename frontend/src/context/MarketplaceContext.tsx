@@ -55,22 +55,34 @@ export function MarketplaceProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Fetch initial data
+    console.log('Fetching marketplace data...');
     Promise.all([
       fetch(`${API_URL}/agents`).then(r => r.json()),
       fetch(`${API_URL}/transactions`).then(r => r.json()),
       fetch(`${API_URL}/stats`).then(r => r.json())
     ]).then(([agentsData, txData, statsData]) => {
+      console.log('Agents:', agentsData);
+      console.log('Transactions:', txData);
+      console.log('Stats:', statsData);
       setAgents(agentsData);
       setTransactions(txData);
       setStats(statsData);
       setLoading(false);
+    }).catch(err => {
+      console.error('Failed to fetch marketplace data:', err);
+      setLoading(false);
     });
 
     // WebSocket for real-time updates
+    console.log('Connecting to WebSocket...');
     const ws = new WebSocket(WS_URL);
+    
+    ws.onopen = () => console.log('✅ WebSocket connected');
+    ws.onerror = (err) => console.error('WebSocket error:', err);
     
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
+      console.log('WebSocket message:', data);
       
       if (data.type === 'agent_registered') {
         setAgents(prev => [...prev, data.agent]);
